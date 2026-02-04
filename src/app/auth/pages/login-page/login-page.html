@@ -1,0 +1,80 @@
+<form
+  class="flex flex-col card w-full max-w-sm bg-base-100 shadow-xl p-6 space-y-4"
+  [formGroup]="loginForm"
+  (ngSubmit)="onSubmit()"
+>
+  <!-- Email -->
+  <label class="input input-bordered flex items-center gap-2">
+    <svg
+      xmlns="http://www.w3.org/2000/svg"
+      class="h-[1em] opacity-50"
+      viewBox="0 0 24 24"
+      fill="none"
+      stroke="currentColor"
+      stroke-width="2"
+      stroke-linecap="round"
+      stroke-linejoin="round"
+    >
+      <rect width="20" height="16" x="2" y="4" rx="2" />
+      <path d="m22 7-8.97 5.7a1.94 1.94 0 0 1-2.06 0L2 7" />
+    </svg>
+    <input
+      type="email"
+      class="grow"
+      placeholder="correo@ejemplo.com"
+      formControlName="email"
+      required
+    />
+  </label>
+
+  <!-- Password -->
+  <label class="input input-bordered flex items-center gap-2">
+    <svg
+      xmlns="http://www.w3.org/2000/svg"
+      class="h-[1em] opacity-50"
+      viewBox="0 0 24 24"
+      fill="none"
+      stroke="currentColor"
+      stroke-width="2"
+      stroke-linecap="round"
+      stroke-linejoin="round"
+    >
+      <rect width="18" height="11" x="3" y="11" rx="2" />
+      <path d="M7 11V7a5 5 0 0 1 10 0v4" />
+    </svg>
+    <input
+      type="password"
+      class="grow"
+      placeholder="Contraseña"
+      formControlName="password"
+      required
+    />
+  </label>
+  <!-- Button -->
+  <button type="submit" class="btn btn-primary w-full">Entrar</button>
+
+  @if (hasError()) {
+
+      <div role="alert" class="alert alert-error fixed animate-fadeIn bottom-5 right-5">
+        <svg
+          xmlns="http://www.w3.org/2000/svg"
+          class="h-6 w-6 shrink-0 stroke-current"
+          fill="none"
+          viewBox="0 0 24 24"
+        >
+          <path
+            stroke-linecap="round"
+            stroke-linejoin="round"
+            stroke-width="2"
+            d="M10 14l2-2m0 0l2-2m-2 2l-2-2m2 2l2 2m7-2a9 9 0 11-18 0 9 9 0 0118 0z"
+          />
+        </svg>
+        <span>Por favor verifique la información ingresada</span>
+      </div>
+  }
+
+  <p class="text-slate-600 text-xs">
+    ¿No tienes cuenta?
+    <a routerLink="/auth/register" class="text-secondary">Crea una aqui</a>
+  </p>
+</form>
