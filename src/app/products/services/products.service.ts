@@ -46,8 +46,8 @@ export class ProductsService {
       return of(this.productCache.get(idSlug)!);
     }
 
-    return this.http.get<Product>(`${baseUrl}/products/${idSlug}`)
-    .pipe(tap((product) => this.productCache.set(idSlug, product)))
-    ;
+    return this.http
+      .get<Product>(`${baseUrl}/products/${idSlug}`)
+      .pipe(tap((product) => this.productCache.set(idSlug, product)));
   }
 }
